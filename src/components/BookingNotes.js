@@ -1,9 +1,5 @@
 import React, { useState } from "react";
-import FormGroup from "@mui/material/FormGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Switch from "@mui/material/Switch";
-import { Divider, Avatar } from "@mui/material";
-import { Edit } from "@mui/icons-material";
+import { Divider} from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
 
 function BookingNotes() {
@@ -58,10 +54,14 @@ function BookingNotes() {
                     You are suffering from hypertension
                   </p>
                   <div className="flex justify-between">
-                    <a style={{ color: "#4dc3ff", fontSize: "medium" }}>
+                    <a style={{ color: "#4dc3ff", fontSize: "medium" }}
+                      href ="#"
+                    >
                       Dr Deepak Aulak
                     </a>
-                    <a style={{ color: "#0099e6", fontSize: "large" }}>
+                    <a style={{ color: "#0099e6", fontSize: "large" }}
+                      href ="#"
+                    >
                       View booking
                     </a>
                   </div>

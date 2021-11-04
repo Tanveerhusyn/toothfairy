@@ -1,4 +1,4 @@
-/** @format */
+
 
 import React from "react";
 
@@ -29,16 +29,16 @@ function CaptureDetails() {
                   alt="gallery"
 
                   className="h-full"
-                  // class="block object-cover object-center w-full h-full rounded-lg"
+                  // className="block object-cover object-center w-full h-full rounded-lg"
                   src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80"
                 />
-                <p className="m-2 text-gray-500">Upeer</p>
+                <p className="m-2 text-gray-500">Upper</p>
               </div>
               <div style={{margin:'3px',height:'240px',marginBottom:'30px'}}>
                 <img
                   alt="gallery"
                   className="h-full"
-                  // class="block object-cover object-center w-full h-full rounded-lg"
+                  // className="block object-cover object-center w-full h-full rounded-lg"
                   src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80"
                 />
                 <p className="m-2 text-gray-500">Middle</p>
@@ -47,7 +47,7 @@ function CaptureDetails() {
                 <img
                   alt="gallery"
                   className="h-full"
-                  // class="block object-cover object-center w-full h-full rounded-lg"
+                  // className="block object-cover object-center w-full h-full rounded-lg"
                   src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80"
                 />
                 <p className="m-2 text-gray-500">Lower</p>

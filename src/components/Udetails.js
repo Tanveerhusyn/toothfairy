@@ -11,10 +11,10 @@ function Udetails() {
         <div className="flex flex-row justify-between">
             <div className ="font-semibold">User</div>
             <Link to ="/Users/Userdetails/Edituser"> 
-            <a href ='#' className="flex p-1" >
+           
               <Edit style ={{color: 'blue', width:'25px'}}/>
                 <p style ={{color:'blue'}}>Edit Details</p>
-            </a></Link>
+            </Link>
           </div>
           <Divider sx={{width:'100%', margin:'0'}}/>
           <div className="flex flex-col">

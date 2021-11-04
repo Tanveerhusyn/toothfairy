@@ -2,7 +2,7 @@ import React, { useState, Fragment,forwardRef } from "react";
 import { saveAs } from 'file-saver'
 import { ArrowDropDownSharp } from "@mui/icons-material";
 import SearchIcon from "@mui/icons-material/Search";
-import MaterialTable, { MTableToolbar } from "material-table";
+import MaterialTable from '@material-table/core';
 import Vector from '../assets/Vector.svg';
 import {
   Avatar,
@@ -16,10 +16,8 @@ import {
   DialogContentText,
   DialogTitle,
 } from "@mui/material";
-import Dropdown from "@material-tailwind/react/Dropdown";
 import Carousel from "react-material-ui-carousel";
-import DropdownItem from "@material-tailwind/react/DropdownItem";
-import DropdownLink from "@material-tailwind/react/DropdownLink";
+
 import { ImCross } from "react-icons/im";
 import { AiOutlineCloudDownload } from "react-icons/ai";
 
@@ -28,7 +26,6 @@ import { MoreVert } from "@mui/icons-material";
 
 // className=" h-screen w-full mt-20 "
 import { Menu, Transition } from "@headlessui/react";
-import { ChevronDownIcon } from "@heroicons/react/solid";
 // className=" h-screen w-full mt-20 "
 
 function classNames(...classes) {
@@ -47,7 +44,6 @@ export default function Aitrack() {
   // };
   
 
-  const [caro, setCaro] = useState(true);
   const [anchorEll, setAnchorEll] = React.useState(null);
 
   const open2 = Boolean(anchorEll);
@@ -57,7 +53,6 @@ export default function Aitrack() {
   };
 
   function Item(props) {
-    var element = document.createElement("a");
 
     return (
       <Paper>
@@ -148,8 +143,9 @@ export default function Aitrack() {
     >
       <div className="lg:flex flex-col justify-between text-white md:flex-row ">
         <div style={{ width: "250px" }}>
-          <Paper component="form" className="mb-4 w-60">
-            <IconButton type="submit" sx={{ p: "5px" }} aria-label="search">
+          <Paper         style ={{ boxShadow: "none", border: '1px solid #E5E5EA'}}
+            component="form" className="mb-4 w-60">
+            <IconButton  sx={{ p: "5px" }} aria-label="search">
               <SearchIcon />
             </IconButton>
             <InputBase
@@ -163,7 +159,7 @@ export default function Aitrack() {
 
       <MaterialTable
      
-        
+        style ={{ boxShadow: "none", border: '1px solid #E5E5EA'}}
         icons={{ SortArrow: forwardRef((props, ref) => <ArrowDropDownSharp sx ={{color:'black'}} {...props} ref={ref}/>)}}
 
         title=""
@@ -252,7 +248,7 @@ export default function Aitrack() {
           },
 
           {
-            title: "Created On",
+            title: "Capture Date & Time",
             field: "createdOn",
             cellStyle: {
               minWidth: "200px",
@@ -266,7 +262,7 @@ export default function Aitrack() {
                 {/* <IconButton onClick={handleButton}><MoreVert/></IconButton> */}
                 <Menu as="div" className="relative inline-block  text-left ">
                   <div>
-                    <Menu.Button className="inline-flex justify-center w-full rounded-md  px-4 py-2 bg-white text-sm font-medium text-gray-700  focus:outline-none">
+                    <Menu.Button className="inline-flex justify-center w-full rounded-md  px-4 py-2 bg-grey-100 text-sm font-medium text-gray-700  focus:outline-none">
                       <MoreVert
                         className="-mr-1 ml-2 h-5 w-5"
                         aria-hidden="true"
@@ -288,8 +284,8 @@ export default function Aitrack() {
                         <Link to="/aitrack/capturedetails">
                           <Menu.Item>
                             {({ active }) => (
-                              <a
-                                href="#"
+                              <p
+                               
 
                                 className={classNames(
                                   active
@@ -299,14 +295,14 @@ export default function Aitrack() {
                                 )}
                               >
                                 View Capture Details
-                              </a>
+                              </p>
                             )}
                           </Menu.Item>
                         </Link>
                         <Link to="/edituser"></Link>
                         <Menu.Item>
                           {({ active }) => (
-                            <a
+                            <p
                               href="#"
                               onClick={handleClick2}
                               className={classNames(
@@ -317,7 +313,7 @@ export default function Aitrack() {
                               )}
                             >
                               View images
-                            </a>
+                            </p>
                           )}
                         </Menu.Item>
                         <form>
@@ -489,11 +485,11 @@ export default function Aitrack() {
          className="fixed top-0 left-0 z-50 py-3  pl-2 leading-normal   rounded-lg text-black"
          role="alert"
          style={{
-           marginTop: "42%",
-           marginLeft: "1%",
-           color: "#fff",
-           width: "300px",
-           background: "#05944f",
+          marginTop: "41%",
+            marginLeft: "10px",
+            color: "#fff",
+            width: "245px",
+            background: "#05944f",
          }}
        >
          <p>Record removed</p>

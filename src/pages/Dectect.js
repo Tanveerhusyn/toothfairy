@@ -1,30 +1,40 @@
-import React, { useState,Fragment,forwardRef } from "react";
-import SearchIcon from "@mui/icons-material/Search";
-import MaterialTable, { MTableToolbar } from "material-table";
-import { Avatar,InputBase,IconButton,Paper,Button,Dialog,DialogActions,DialogContent,DialogContentText,DialogTitle} from "@mui/material";
-import Carousel from 'react-material-ui-carousel'
-import {ArrowDropDownSharp} from '@mui/icons-material';
+/** @format */
 
-import DropdownLink from "@material-tailwind/react/DropdownLink"
+import React, { useState, Fragment, forwardRef } from "react";
+import SearchIcon from "@mui/icons-material/Search";
+import MaterialTable from '@material-table/core';
+import {
+  Avatar,
+  InputBase,
+  IconButton,
+  Paper,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+} from "@mui/material";
+import Carousel from "react-material-ui-carousel";
+import { ArrowDropDownSharp } from "@mui/icons-material";
+
+import DropdownLink from "@material-tailwind/react/DropdownLink";
 import { ImCross } from "react-icons/im";
 import { AiOutlineCloudDownload } from "react-icons/ai";
 
 import { Link } from "react-router-dom";
 import { MoreVert } from "@mui/icons-material";
-import { saveAs } from 'file-saver'
-import Vector from 'assets/Vector.svg'
-
+import { saveAs } from "file-saver";
+import Vector from "assets/Vector.svg";
 
 // className=" h-screen w-full mt-20 "
-import { Menu, Transition } from '@headlessui/react'
-import { ChevronDownIcon } from '@heroicons/react/solid'
+import { Menu, Transition } from "@headlessui/react";
+import { ChevronDownIcon } from "@heroicons/react/solid";
 // className=" h-screen w-full mt-20 "
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(" ");
 }
-
-
 
 export default function Detect() {
   // const [open, setOpen] = useState(false);
@@ -43,54 +53,67 @@ export default function Detect() {
   const open2 = Boolean(anchorEll);
   const handleClose2 = (event) => {
     event.preventDefault();
-     setAnchorEll(null);
-   };
+    setAnchorEll(null);
+  };
 
-  function Item(props)
-  {
-      return (
-        <Paper >
+  function Item(props) {
+    return (
+      <Paper>
         <div className="bg-red-400 relative  ">
           <img src={props.item.img1} />
-          <div onClick={handleClose2} className="absolute top-0 right-0  flex flex-row mx-4 my-2 text-white bg-red" >
-          <IconButton
-              style ={{zIndex:'999',backgroundColor:'transparent',outline:'none'}}
+          <div
+            onClick={handleClose2}
+            className="absolute top-0 right-0  flex flex-row mx-4 my-2 text-white bg-red"
+          >
+            <IconButton
+              style={{
+                zIndex: "999",
+                backgroundColor: "transparent",
+                outline: "none",
+              }}
               onClick={() => {
-                saveAs(props.item.img1, 'image.jpg') // Put your image url here.
-
+                saveAs(props.item.img1, "image.jpg"); // Put your image url here.
               }}
             >
-              <AiOutlineCloudDownload style ={{color:'white',outline:'none',marginTop:'10px'}} className="text-3xl  cursor-pointer" />
+              <AiOutlineCloudDownload
+                style={{ color: "white", outline: "none", marginTop: "10px" }}
+                className="text-3xl  cursor-pointer"
+              />
             </IconButton>
             <IconButton
-               style ={{zIndex:'999',backgroundColor:'transparent',outline:'none'}}
-             onClick={handleClose2}
+              style={{
+                zIndex: "999",
+                backgroundColor: "transparent",
+                outline: "none",
+              }}
+              onClick={handleClose2}
             >
-              <ImCross style ={{color:'white',outline:'none'}} className="text-sm mt-2  mr-4 cursor-pointer" />
+              <ImCross
+                style={{ color: "white", outline: "none" }}
+                className="text-sm mt-2  mr-4 cursor-pointer"
+              />
             </IconButton>
-           
           </div>
         </div>
       </Paper>
-      )
+    );
   }
-
 
   var items = [
     {
-       img1:"https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      img1: "https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     },
     {
-        img1:"https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    }
-]
+      img1: "https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    },
+  ];
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [showError, setShowError] = React.useState(null);
-  const [hidden, setHidden] = React.useState('visible');
+  const [hidden, setHidden] = React.useState("visible");
   const open = Boolean(anchorEl);
 
   const handleClick = (event) => {
-    setHidden('hidden');
+    setHidden("hidden");
     setAnchorEl(event.currentTarget);
   };
   const handleClick2 = (event) => {
@@ -98,7 +121,7 @@ export default function Detect() {
     setAnchorEll(event.currentTarget);
   };
   const handleClose = () => {
-    setHidden('visible');
+    setHidden("visible");
     setAnchorEl(null);
   };
   const handleYes = (event) => {
@@ -108,28 +131,33 @@ export default function Detect() {
     setShowError(true);
     setTimeout(() => {
       setShowError(false);
-      
     }, 3000);
     setAnchorEl(null);
   };
 
-
-
-
   const [showModal, setShowModal] = React.useState(false);
 
-  const handleMenuClick = () =>{
+  const handleMenuClick = () => {
     // e.preventDefault();
-             
-    
-  }
- 
+  };
+
   return (
-    <div style={{ height: "20vh", width: "90%", marginTop: "30px",marginLeft:'40px' }}>
+    <div
+      style={{
+        height: "20vh",
+        width: "90%",
+        marginTop: "30px",
+        marginLeft: "40px",
+      }}
+    >
       <div className="lg:flex flex-col justify-between text-white md:flex-row ">
         <div style={{ width: "250px" }}>
-          <Paper component="form" className="mb-4 w-60">
-            <IconButton type="submit" sx={{ p: "5px" }} aria-label="search">
+          <Paper
+            style={{ boxShadow: "none", border: "1px solid #E5E5EA" }}
+            component="form"
+            className="mb-4 w-60"
+          >
+            <IconButton  sx={{ p: "5px" }} aria-label="search">
               <SearchIcon />
             </IconButton>
             <InputBase
@@ -139,13 +167,15 @@ export default function Detect() {
             />
           </Paper>
         </div>
-        
       </div>
 
       <MaterialTable
-        style ={{overflow:'hidden'}}
-        icons={{ SortArrow: forwardRef((props, ref) => <ArrowDropDownSharp sx ={{color:'black'}} {...props} ref={ref}/>)}}
-
+        style={{ boxShadow: "none", border: "1px solid #E5E5EA" }}
+        icons={{
+          SortArrow: forwardRef((props, ref) => (
+            <ArrowDropDownSharp sx={{ color: "black" }} {...props} ref={ref} />
+          )),
+        }}
         title=""
         options={{
           search: false,
@@ -176,8 +206,7 @@ export default function Detect() {
             ),
             cellStyle: {
               minWidth: "150px",
-              paddingRight:'30px',
-              
+              paddingRight: "30px",
             },
           },
 
@@ -194,41 +223,42 @@ export default function Detect() {
             cellStyle: {
               minWidth: "150px",
             },
-            
           },
           {
             title: "Captures",
             field: "captures",
-            render: rowData=>(
-            <div>
-              <a onClick={handleClick2} style={{color:"blue",textDecoration:'underline',cursor:'pointer'}}>{rowData.captures}</a>
-            <Dialog
-            open={open2}
-            maxWidth ="lg"
-            onClose={handleClose2}
-            aria-labelledby="alert-dialog-title"
-            aria-describedby="alert-dialog-description"
-          >
-           <Carousel
-           
-           navButtonsAlwaysVisible ={true}
-           animation="slide"
-          
-           >
-            {
-                items.map( (item, i) => <Item key={i} item={item} /> )
-            }
-        </Carousel>
-          </Dialog>
-            </div>
-            )
-           ,cellStyle:{
-             
-             minWidth:'150px',
-           }
-           
+            render: (rowData) => (
+              <div>
+                <a
+                  onClick={handleClick2}
+                  style={{
+                    color: "blue",
+                    textDecoration: "underline",
+                    cursor: "pointer",
+                  }}
+                >
+                  {rowData.captures}
+                </a>
+                <Dialog
+                  open={open2}
+                  maxWidth="lg"
+                  onClose={handleClose2}
+                  aria-labelledby="alert-dialog-title"
+                  aria-describedby="alert-dialog-description"
+                >
+                  <Carousel navButtonsAlwaysVisible={true} animation="slide">
+                    {items.map((item, i) => (
+                      <Item key={i} item={item} />
+                    ))}
+                  </Carousel>
+                </Dialog>
+              </div>
+            ),
+            cellStyle: {
+              minWidth: "150px",
+            },
           },
-        
+
           {
             title: "Capture Date & Time",
             field: "createdOn",
@@ -243,78 +273,82 @@ export default function Detect() {
               <div>
                 {/* <IconButton onClick={handleButton}><MoreVert/></IconButton> */}
                 <Menu as="div" className="relative inline-block  text-left ">
-      <div>
-        <Menu.Button className="inline-flex justify-center w-full rounded-md  px-4 py-2 bg-white text-sm font-medium text-gray-700  focus:outline-none">
-    
-          <MoreVert className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
-        </Menu.Button>
-      </div>
+                  <div>
+                    <Menu.Button className="inline-flex justify-center w-full rounded-md  px-4 py-2 bg-grey-100 text-sm font-medium text-gray-700  focus:outline-none">
+                      <MoreVert
+                        className="-mr-1 ml-2 h-5 w-5"
+                        aria-hidden="true"
+                      />
+                    </Menu.Button>
+                  </div>
 
-      <Transition
-        as={Fragment}
-        enter="transition ease-out duration-100"
-        enterFrom="transform opacity-0 scale-95"
-        enterTo="transform opacity-100 scale-100"
-        leave="transition ease-in duration-75"
-        leaveFrom="transform opacity-100 scale-100"
-        leaveTo="transform opacity-0 scale-95"
-      >
-        <Menu.Items className="origin-top-right absolute z-50 right-0 mt-2 w-56 rounded-md  bg-white ring-1 ring-black ring-opacity-5 w-40 focus:outline-none">
-          <div className="py-1">
-           <Link to ="/detect/capturedetails">
-            <Menu.Item>
-              {({ active }) => (
-                <a
-                href="#"
-                className={classNames(
-                  active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                  'block px-4 py-2 text-sm'
-                  )}
+                  <Transition
+                    as={Fragment}
+                    enter="transition ease-out duration-100"
+                    enterFrom="transform opacity-0 scale-95"
+                    enterTo="transform opacity-100 scale-100"
+                    leave="transition ease-in duration-75"
+                    leaveFrom="transform opacity-100 scale-100"
+                    leaveTo="transform opacity-0 scale-95"
                   >
-                  View Capture Details
-                </a>
-              )}
-            </Menu.Item>
-              </Link>
-             <Link to ="/edituser">
-           
-              </Link>
-            <Menu.Item>
-              {({ active }) => (
-                <a
-                  href="#"
-                  onClick={handleClick2}
-                  className={classNames(
-                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                    'block px-4 py-2 text-sm'
-                  )}
-                >
-                  View images
-                </a>
-              )}
-            </Menu.Item>
-            <div>
-              <Menu.Item>
-                {({ active }) => (
-                  <button
-                   
-                    style ={{color:'red'}}
-                    onClick={handleClick}
-                    className={classNames(
-                      active ? 'bg-gray-100 text-red-500' : 'text-gray-700',
-                      'block w-full text-left px-4 py-2 text-sm'
-                    )}
-                  >
-                    Remove Record
-                  </button>
-                )}
-              </Menu.Item>
-            </div>
-          </div>
-        </Menu.Items>
-      </Transition>
-    </Menu>
-    <Dialog
+                    <Menu.Items className="origin-top-right absolute z-50 right-0 mt-2 w-56 rounded-md  bg-white ring-1 ring-black ring-opacity-5 w-40 focus:outline-none">
+                      <div className="py-1">
+                        <Link to="/detect/capturedetails">
+                          <Menu.Item>
+                            {({ active }) => (
+                              <p
+                                className={classNames(
+                                  active
+                                    ? "bg-gray-100 text-gray-900"
+                                    : "text-gray-700",
+                                  "block px-4 py-2 text-sm"
+                                )}
+                              >
+                                View Capture Details
+                              </p>
+                            )}
+                          </Menu.Item>
+                        </Link>
+                        <Link to="/edituser"></Link>
+                        <Menu.Item>
+                          {({ active }) => (
+                            <p
+                             
+                              onClick={handleClick2}
+                              className={classNames(
+                                active
+                                  ? "bg-gray-100 text-gray-900"
+                                  : "text-gray-700",
+                                "block px-4 py-2 text-sm"
+                              )}
+                            >
+                              View images
+                            </p>
+                          )}
+                        </Menu.Item>
+                        <div>
+                          <Menu.Item>
+                            {({ active }) => (
+                              <button
+                                style={{ color: "red" }}
+                                onClick={handleClick}
+                                className={classNames(
+                                  active
+                                    ? "bg-gray-100 text-red-500"
+                                    : "text-gray-700",
+                                  "block w-full text-left px-4 py-2 text-sm"
+                                )}
+                              >
+                                Remove Record
+                              </button>
+                            )}
+                          </Menu.Item>
+                        </div>
+                      </div>
+                    </Menu.Items>
+                  </Transition>
+                </Menu>
+                <Dialog
                   BackdropProps={{
                     style: { backgroundColor: "rgba(0,0,0,0.03)" },
                   }}
@@ -322,9 +356,8 @@ export default function Detect() {
                     "& .MuiDialog-container .MuiPaper-root": {
                       boxShadow: "none",
                       height: "37%",
-                      borderRadius:'15px',
+                      borderRadius: "15px",
                       paddingTop: "20px",
-                      
                     },
                   }}
                   open={open}
@@ -335,12 +368,12 @@ export default function Detect() {
                   <DialogTitle id="alert-dialog-title">
                     {"Are you sure?"}
                   </DialogTitle>
-                  <DialogContent sx ={{overflow:'hidden'}}>
+                  <DialogContent sx={{ overflow: "hidden" }}>
                     <DialogContentText id="alert-dialog-description">
-                        All information related to the user will be removed. You
-                        can still see the information linked to that user in
-                        other section of the application. Click 'Yes' to delete
-                        or 'No' to cacncel the action.
+                      All information related to the user will be removed. You
+                      can still see the information linked to that user in other
+                      section of the application. Click 'Yes' to delete or 'No'
+                      to cacncel the action.
                     </DialogContentText>
                   </DialogContent>
                   <DialogActions>
@@ -365,8 +398,8 @@ export default function Detect() {
                     </Button>
                   </DialogActions>
                 </Dialog>
-   <div>
-   {/* <Dialog
+                <div>
+                  {/* <Dialog
                   open={open}
                   onClose={handleClose}
                   aria-labelledby="alert-dialog-title"
@@ -404,17 +437,12 @@ export default function Detect() {
                     </Button>
                   </DialogActions>
                 </Dialog> */}
-                
-   </div>
                 </div>
-                
-                
-              
+              </div>
             ),
-            cellStyle:{
-              paddingRight:'50px',
-              
-            }
+            cellStyle: {
+              paddingRight: "50px",
+            },
           },
         ]}
         // className={` mx-4 px-4 py-2 text-base rounded-full text-${rowData.ProfileStatus=="incomplete"?"yellow":"gray"}-600 border border-${rowData.ProfileStatus=="incomplete"?"yellow":"gray"}-600`}
@@ -425,62 +453,62 @@ export default function Detect() {
             lastName: "Brady",
             Email: "jason@toothfairyapp.co.uk",
             createdOn: "25-10-2021 11:18:00",
-            
-            imageUrl:"https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-            
-            captures:"View images",
+
+            imageUrl:
+              "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+
+            captures: "View images",
           },
           {
             name: "Kumar",
             lastName: "Ariz",
             Email: "kumar@toothfairyapp.co.uk",
             createdOn: "25-10-2021 11:18:00",
-            captures:"View images",
+            captures: "View images",
 
             imageUrl:
               "https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-          
           },
           {
             name: "Kireten",
             lastName: "Morrison",
             Email: "kriten@toothfairyapp.co.uk",
-            captures:"View images",
+            captures: "View images",
             createdOn: "25-10-2021 11:18:00",
             imageUrl:
               "https://images.pexels.com/photos/1987301/pexels-photo-1987301.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-            
           },
           {
             name: "Jason",
             lastName: "Brady",
             Email: "jason@toothfairyapp.co.uk",
-            captures:"View images",
+            captures: "View images",
             createdOn: "25-10-2021 11:18:00",
             imageUrl:
               "https://avatars0.githubusercontent.com/u/7895451?s=460&v=4",
-           
           },
         ]}
       />
-       <>
-       {showError ? (
-       
-       <div
-         className="fixed top-0 left-0 z-50 py-3  pl-2 leading-normal   rounded-lg text-black"
-         role="alert"
-         style={{
-           marginTop: "42%",
-           marginLeft: "1%",
-           color: "#fff",
-           width: "300px",
-           background: "#05944f",
-         }}
-       >
-         <p>Record removed</p>
-         <span className="absolute inset-y-0 right-0 text-white flex items-center mr-4 cursor-pointer" onClick={() => setShowError(false)}>
-           <img  src={Vector}  alt='' onClick={()=>setShowError(false)}  />
-           {/* <svg
+      <>
+        {showError ? (
+          <div
+            className="fixed top-0 left-0 z-50 py-3  pl-2 leading-normal   rounded-lg text-black"
+            role="alert"
+            style={{
+              marginTop: "41%",
+            marginLeft: "10px",
+            color: "#fff",
+            width: "245px",
+            background: "#05944f",
+            }}
+          >
+            <p>Record removed</p>
+            <span
+              className="absolute inset-y-0 right-0 text-white flex items-center mr-4 cursor-pointer"
+              onClick={() => setShowError(false)}
+            >
+              <img src={Vector} alt="" onClick={() => setShowError(false)} />
+              {/* <svg
              className="w-4 h-4 text-white fill-current"
              style={{ color: "#fff" }}
              role="button"
@@ -493,14 +521,12 @@ export default function Detect() {
                fill-rule="evenodd"
              ></path>
            </svg> */}
-
-         </span>
-       </div>
-     ) : (
-       ""
-     )}
-         
-        </>
+            </span>
+          </div>
+        ) : (
+          ""
+        )}
+      </>
     </div>
   );
 }

@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import validator from "validator";
 
 function Login({ isLogged, setisLogged }) {
   const [showError, setShowError] = useState(false);
   const [emailError, setEmailError] = useState("");
-  const [validate1, setValidate1] = useState(true);
   const [email,setEmail] = useState("");
   const [pass,setPass] = useState("");
   
@@ -27,7 +26,7 @@ function Login({ isLogged, setisLogged }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (emailError!=""||email==""||pass=="") {
+    if (emailError!==""||email===""||pass==="") {
       setShowError(true);
     } else {
       setisLogged(true);
@@ -55,7 +54,7 @@ function Login({ isLogged, setisLogged }) {
                     <div className="py-2">
                       <span className="px-1 text-sm text-gray-600">Email</span>
                       <input
-                        type="text"
+                        
                         id="userEmail"
                         autoCapitalize="off"
                         required
@@ -126,7 +125,7 @@ function Login({ isLogged, setisLogged }) {
                 <p>Email or Password is incorrect!</p>
                 <span
                   onClick={toggleError}
-                  class="absolute inset-y-0 text-bold cursor-pointer right-0 text-white flex items-center mr-4"
+                  className="absolute inset-y-0 text-bold cursor-pointer right-0 text-white flex items-center mr-4"
                 >
                   x
                 </span>

@@ -2,21 +2,11 @@ import { useLocation,Link } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
 
-import GroupIcon from "@mui/icons-material/Group";
 import Button from "@material-tailwind/react/Button";
 import Icon from "@material-tailwind/react/Icon";
-import Sidebar from "./Sidebar";
-import {Divider} from '@mui/material';
-import useBreadcrumbs from 'use-react-router-breadcrumbs';
-
-
 export default function AdminNavbar({ showSidebar, setShowSidebar, Ticon, setTicon }) {
   const location = useLocation().pathname;
-  const breadcrumbs = useBreadcrumbs()
   const sp = location.split('/');
-
-
-  const arr = []
 
   function capitalizeFirstLetter(string) {
     
@@ -81,21 +71,21 @@ export default function AdminNavbar({ showSidebar, setShowSidebar, Ticon, setTic
                  <div>{"Home"}</div>
                 </Link>
               
-                <Typography color="text.Secondary" style ={{display:'flex',marginLeft:'10px'}}>
+                <div color="text.Secondary" style ={{display:'flex',marginLeft:'10px'}}>
                 {
                
-               sp.map((ch)=>{
+               sp.map((ch,idx)=>{
                    if(ch!==""){
-                     console.log("CH",ch);
+                     
                       
-                      return(ch.match(sp[sp.length-1])?<div >{` > ${capitalizeFirstLetter(ch)}`}</div>:<Link style ={{color:'black'}} to ={`/${ch=="Userdetails"?'Users/Userdetails':capitalizeFirstLetter(ch)}`}>{`>${capitalizeFirstLetter(ch)}`}</Link>);
+                      return(ch.match(sp[sp.length-1])?<div key ={idx} >{` > ${capitalizeFirstLetter(ch)}`}</div>:<Link key ={idx} style ={{color:'black'}} to ={`/${ch=="Userdetails"?'Users/Userdetails':capitalizeFirstLetter(ch)}`}>{`>${capitalizeFirstLetter(ch)}`}</Link>);
 
                    }
                    
                })
              }
               
-                </Typography>
+                </div>
                 </div>
                 </div>
               </Breadcrumbs>

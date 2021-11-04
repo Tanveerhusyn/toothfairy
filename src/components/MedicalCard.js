@@ -1,8 +1,4 @@
 import React,{useState} from "react";
-import FormGroup from "@mui/material/FormGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Switch from "@mui/material/Switch";
-import { styled } from '@mui/material/styles';
 import { DragSwitch } from 'react-dragswitch'
 import 'react-dragswitch/dist/index.css'
 import Vector from 'assets/Vector.svg'
@@ -64,11 +60,11 @@ function MedicalCard() {
          className="fixed top-0 left-0 z-50 py-3  pl-2 leading-normal   rounded-lg text-black"
          role="alert"
          style={{
-           marginTop: "38.9%",
-           marginLeft: "1%",
-           color: "#fff",
-           width: "300px",
-           background: "#05944f",
+          marginTop: "38%",
+          marginLeft: "10px",
+          color: "#fff",
+          width: "245px",
+          background: "#05944f",
          }}
        >
          <p>Profile status changed to<br/>

@@ -2,10 +2,9 @@
 
 import React, { useState, forwardRef } from "react";
 import SearchIcon from "@mui/icons-material/Search";
-import MaterialTable, { MTableToolbar } from "material-table";
-import TablePagination from "@mui/material/TablePagination";
+import MaterialTable from '@material-table/core';
 import { ArrowDropDownSharp } from "@mui/icons-material";
-import Vector from '../assets/Vector.svg'
+import Vector from "../assets/Vector.svg";
 import {
   Avatar,
   InputBase,
@@ -18,15 +17,11 @@ import {
   DialogContentText,
   DialogTitle,
 } from "@mui/material";
-import Dropdown from "@material-tailwind/react/Dropdown";
-import DropdownItem from "@material-tailwind/react/DropdownItem";
-import DropdownLink from "@material-tailwind/react/DropdownLink";
 import { Link } from "react-router-dom";
 import { MoreVert } from "@mui/icons-material";
 import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
-import { ChevronDownIcon } from "@heroicons/react/solid";
-import CustomPagination from "./CustomPagination";
+
 // className=" h-screen w-full mt-20 "
 
 function classNames(...classes) {
@@ -91,7 +86,6 @@ export default function Table() {
     setShowError(true);
     setTimeout(() => {
       setShowError(false);
-      
     }, 3000);
     setAnchorEl(null);
   };
@@ -106,7 +100,6 @@ export default function Table() {
     setShowError2(true);
     setTimeout(() => {
       setShowError2(false);
-      
     }, 3000);
     setAnchorEll(null);
   };
@@ -119,8 +112,12 @@ export default function Table() {
     <div style={{ height: "100vh", width: "100%", marginTop: "100px" }}>
       <div className="lg:flex flex-col justify-between text-white md:flex-row ">
         <div style={{ width: "250px" }}>
-          <Paper component="form" className="mb-4 w-60">
-            <IconButton type="submit" sx={{ p: "5px" }} aria-label="search">
+          <Paper
+            sx={{ boxShadow: "none", border: "1px solid #E5E5EA" }}
+            component="form"
+            className="mb-4 w-60 shadow-none"
+          >
+            <IconButton sx={{ p: "5px" }} aria-label="search">
               <SearchIcon />
             </IconButton>
             <InputBase
@@ -138,7 +135,12 @@ export default function Table() {
       </div>
 
       <MaterialTable
-        style={{ overflow: "hidden" , zIndex : "1" }}
+        style={{
+          overflow: "hidden",
+          zIndex: "1",
+          boxShadow: "none",
+          border: "1px solid #E5E5EA",
+        }}
         icons={{
           SortArrow: forwardRef((props, ref) => (
             <ArrowDropDownSharp sx={{ color: "black" }} {...props} ref={ref} />
@@ -157,7 +159,7 @@ export default function Table() {
         options={{
           search: false,
           sorting: true,
-          headerStyle: { position: "sticky", paddingLeft: "20px" },
+          headerStyle: { position: "sticky", paddingLeft: "15px" },
 
           searchFieldAlignment: "left",
           searchFieldStyle: {
@@ -194,8 +196,11 @@ export default function Table() {
             ),
             cellStyle: {
               minWidth: "200px",
-              paddingRight: "80px",
+              paddingRight: "90px",
             },
+            headerStyle:{
+              paddingLeft:'20px',
+            }
           },
 
           {
@@ -277,7 +282,7 @@ export default function Table() {
                 {/* <IconButton onClick={handleButton}><MoreVert/></IconButton> */}
                 <Menu as="div" className="relative inline-block  text-left ">
                   <div>
-                    <Menu.Button className="inline-flex z-50 justify-center w-full rounded-md  px-4 py-2 bg-white text-sm font-medium text-gray-700  focus:outline-none">
+                    <Menu.Button className="inline-flex z-50 justify-center w-full rounded-md  px-4 py-2 bg-grey-100 text-sm font-medium text-gray-700  focus:outline-none">
                       <MoreVert
                         className="-mr-1 ml-2 h-5 w-5"
                         aria-hidden="true"
@@ -299,8 +304,8 @@ export default function Table() {
                         <Link to="/Users/Userdetails">
                           <Menu.Item>
                             {({ active }) => (
-                              <a
-                                href="#"
+                              <p
+                               
                                 className={classNames(
                                   active
                                     ? "bg-gray-100 text-gray-900"
@@ -309,15 +314,14 @@ export default function Table() {
                                 )}
                               >
                                 View Details
-                              </a>
+                              </p>
                             )}
                           </Menu.Item>
                         </Link>
                         <Link to="/edituser">
                           <Menu.Item>
                             {({ active }) => (
-                              <a
-                                href="#"
+                              <p
                                 onClick={handleClick}
                                 className={classNames(
                                   active
@@ -327,14 +331,14 @@ export default function Table() {
                                 )}
                               >
                                 Deactivate User
-                              </a>
+                              </p>
                             )}
                           </Menu.Item>
                         </Link>
                         <Menu.Item>
                           {({ active }) => (
                             <a
-                              href="#"
+                              
                               className={classNames(
                                 active
                                   ? "bg-gray-100 text-gray-900"
@@ -350,7 +354,6 @@ export default function Table() {
                           <Menu.Item>
                             {({ active }) => (
                               <button
-                                type="submit"
                                 style={{ color: "red" }}
                                 onClick={handleClick2}
                                 className={classNames(
@@ -520,22 +523,24 @@ export default function Table() {
         ]}
       />
       {showError ? (
-       
-       <div
-         className="fixed top-0 left-0 z-50 py-3  pl-2 leading-normal   rounded-lg text-black"
-         role="alert"
-         style={{
-           marginTop: "42%",
-           marginLeft: "1%",
-           color: "#fff",
-           width: "300px",
-           background: "#05944f",
-         }}
-       >
-         <p>User is now deactivated</p>
-         <span className="absolute inset-y-0 right-0 text-white flex items-center mr-4 cursor-pointer" onClick={() => setShowError(false)}>
-           <img  src={Vector}  alt='' onClick={()=>setShowError(false)}  />
-           {/* <svg
+        <div
+          className="fixed top-0 left-0 z-50 py-3  pl-2 leading-normal   rounded-lg text-black"
+          role="alert"
+          style={{
+            marginTop: "41%",
+            marginLeft: "10px",
+            color: "#fff",
+            width: "245px",
+            background: "#05944f",
+          }}
+        >
+          <p>User is now deactivated</p>
+          <span
+            className="absolute inset-y-0 right-0 text-white flex items-center mr-4 cursor-pointer"
+            onClick={() => setShowError(false)}
+          >
+            <img src={Vector} alt="" onClick={() => setShowError(false)} />
+            {/* <svg
              className="w-4 h-4 text-white fill-current"
              style={{ color: "#fff" }}
              role="button"
@@ -548,29 +553,31 @@ export default function Table() {
                fill-rule="evenodd"
              ></path>
            </svg> */}
-
-         </span>
-       </div>
-     ) : (
-       ""
-     )}
+          </span>
+        </div>
+      ) : (
+        ""
+      )}
 
       {showError2 ? (
-       <div
-       className="fixed top-0 left-0 z-50 py-3  pl-2 leading-normal   rounded-lg text-black"
-       role="alert"
-       style={{
-         marginTop: "42%",
-         marginLeft: "1%",
-         color: "#fff",
-         width: "300px",
-         background: "#05944f",
-       }}
-     >
-       <p>User account Deleted</p>
-       <span className="absolute inset-y-0 right-0 text-white flex items-center mr-4 cursor-pointer" onClick={() => setShowError(false)}>
-         <img  src={Vector}  alt=''    onClick={()=>setShowError2(false)}/>
-         {/* <svg
+        <div
+          className="fixed top-0 left-0 z-50 py-3  pl-2 leading-normal   rounded-lg text-black"
+          role="alert"
+          style={{
+            marginTop: "41%",
+            marginLeft: "10px",
+            color: "#fff",
+            width: "245px",
+            background: "#05944f",
+          }}
+        >
+          <p>User account Deleted</p>
+          <span
+            className="absolute inset-y-0 right-0 text-white flex items-center mr-4 cursor-pointer"
+            onClick={() => setShowError(false)}
+          >
+            <img src={Vector} alt="" onClick={() => setShowError2(false)} />
+            {/* <svg
            className="w-4 h-4 text-white fill-current"
            style={{ color: "#fff" }}
            role="button"
@@ -583,12 +590,11 @@ export default function Table() {
              fill-rule="evenodd"
            ></path>
          </svg> */}
-
-       </span>
-     </div>
-   ) : (
-     ""
-   )}
+          </span>
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 }
